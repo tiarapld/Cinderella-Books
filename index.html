@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stok Buku Berbie Cinderella</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { padding: 10px; border: 1px solid #ccc; text-align: center; }
+    input { padding: 5px; margin: 5px; }
+    button { padding: 6px 12px; }
+    .container { max-width: 800px; margin: auto; }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -17,6 +25,16 @@
     <p><strong>Harga:</strong> Rp. 30.000 – Rp. 39.000</p>
     <p>Data diambil dari Google Sheets lewat Google Apps Script API.</p>
 
+    <form id="bookForm" onsubmit="submitForm(event)">
+      <input type="text" name="id" placeholder="ID Buku" required>
+      <input type="text" name="judul" placeholder="Judul Buku" value="Berbie Cinderella" required>
+      <input type="number" name="jilid" placeholder="Jilid" required>
+      <input type="text" name="penulis" placeholder="Penulis" value="Unknown">
+      <input type="number" name="stok" placeholder="Stok" value="100" required>
+      <input type="number" name="harga" placeholder="Harga" required>
+      <button type="submit">➕ Tambah Buku</button>
+    </form>
+
     <table id="bookTable">
       <thead>
         <tr>
@@ -28,7 +46,7 @@
           <th>Harga</th>
         </tr>
       </thead>
-      <tbody></tbody>
+      <tbody id="data-body"></tbody>
     </table>
   </div>
 
