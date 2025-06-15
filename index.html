@@ -7,21 +7,19 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #d0e6ff, #ffe6e6);
+      background-image: url('7c2208f7-1748-4b04-9995-7e972c25b7cf.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
       padding: 20px;
       overflow-x: hidden;
+      backdrop-filter: brightness(0.8) blur(1px);
     }
 
-    h1 {
+    h1, p {
       text-align: center;
-      color: #b30000;
-      margin-bottom: 5px;
-    }
-
-    p {
-      text-align: center;
-      color: #333;
-      margin: 4px;
+      text-shadow: 0 0 10px #fff, 0 0 20px #ffb6c1;
     }
 
     form {
@@ -29,35 +27,41 @@
       flex-wrap: wrap;
       justify-content: center;
       margin-bottom: 20px;
+      backdrop-filter: blur(4px);
     }
 
     input, button {
       padding: 8px;
       margin: 5px;
-      border: 1px solid #ccc;
+      border: none;
       border-radius: 8px;
     }
 
+    input {
+      background-color: #ffffffcc;
+    }
+
     button {
-      background-color: #0066cc;
+      background-color: #ff80aa;
       color: white;
       cursor: pointer;
       transition: background 0.3s ease;
     }
 
     button:hover {
-      background-color: #004080;
+      background-color: #cc4c8b;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background-color: rgba(255, 255, 255, 0.9);
+      color: black;
+      box-shadow: 0 0 10px rgba(255,255,255,0.5);
     }
 
     th {
-      background-color: #cc0000;
+      background-color: #d94f8b;
       color: white;
     }
 
@@ -71,7 +75,7 @@
       display: block;
       margin: 0 auto 20px auto;
       padding: 8px 14px;
-      background-color: #ff8080;
+      background-color: #ffb6c1;
       color: white;
       border: none;
       border-radius: 8px;
@@ -127,12 +131,10 @@
   <p><strong>Stok:</strong> 100 buku per jilid</p>
   <p><strong>Harga:</strong> Rp. 30.000 – Rp. 39.000</p>
 
-  <audio id="bg-music" autoplay loop>
-    <source src="https://cdn.pixabay.com/audio/2022/10/27/audio_e7c14eab3b.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung audio 😭
-  </audio>
-
-  <button id="musicToggle">🔇 Matikan Musik</button>
+  <!-- Embed YouTube as background music -->
+  <div style="display:none;">
+    <iframe width="0" height="0" src="https://www.youtube.com/embed/syp6Lsd8HOo?autoplay=1&loop=1&playlist=syp6Lsd8HOo" frameborder="0" allow="autoplay"></iframe>
+  </div>
 
   <form id="bookForm" onsubmit="submitForm(event)">
     <input type="text" name="id" placeholder="ID Buku" required>
@@ -170,24 +172,7 @@
     }
 
     setInterval(createFlower, 800);
-  </script>
 
-  <script>
-    const music = document.getElementById('bg-music');
-    const toggleBtn = document.getElementById('musicToggle');
-
-    toggleBtn.addEventListener('click', () => {
-      if (music.paused) {
-        music.play();
-        toggleBtn.textContent = "🔇 Matikan Musik";
-      } else {
-        music.pause();
-        toggleBtn.textContent = "🔊 Mainkan Musik";
-      }
-    });
-  </script>
-
-  <script>
     const SHEET_URL = "https://script.google.com/macros/s/AKfycbxNw1266Ytwo6cfCODUQPjha30EB01oj6eCkSUuKjYb4BHR4AQduR3qKjUiKzrj7Dau/exec";
 
     async function loadData() {
