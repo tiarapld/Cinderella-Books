@@ -3,53 +3,228 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stok Buku Berbie Cinderella</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>📚 Stok Buku Cinderella</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { padding: 10px; border: 1px solid #ccc; text-align: center; }
-    input { padding: 5px; margin: 5px; }
-    button { padding: 6px 12px; }
-    .container { max-width: 800px; margin: auto; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #d0e6ff, #ffe6e6);
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      color: #b30000;
+      margin-bottom: 5px;
+    }
+
+    p {
+      text-align: center;
+      color: #333;
+      margin: 4px;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      padding: 8px;
+      margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      background-color: #0066cc;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #004080;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    th {
+      background-color: #cc0000;
+      color: white;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    #musicToggle {
+      display: block;
+      margin: 0 auto 20px auto;
+      padding: 8px 14px;
+      background-color: #ff8080;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .flower {
+      position: absolute;
+      top: -50px;
+      font-size: 24px;
+      animation: fall 8s linear infinite;
+      color: pink;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateX(0) translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: translateX(50px) translateY(50vh) rotate(180deg);
+      }
+      100% {
+        transform: translateX(-50px) translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      form {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      input, button {
+        width: 100%;
+      }
+
+      table {
+        font-size: 14px;
+        overflow-x: auto;
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>📚 Stok Buku Berbie Cinderella</h1>
-    
-    <p>Selamat datang! Website ini menampilkan stok buku Berbie Cinderella dari Google Sheets dengan REST API.</p>
-    <p><strong>Judul:</strong> Berbie Cinderella Jilid 1–10</p>
-    <p><strong>Penulis:</strong> Tiara Putri L.D.</p>
-    <p><strong>Stok:</strong> 100 buku per jilid</p>
-    <p><strong>Harga:</strong> Rp. 30.000 – Rp. 39.000</p>
-    <p>Data diambil dari Google Sheets lewat Google Apps Script API.</p>
 
-    <form id="bookForm" onsubmit="submitForm(event)">
-      <input type="text" name="id" placeholder="ID Buku" required>
-      <input type="text" name="judul" placeholder="Judul Buku" value="Berbie Cinderella" required>
-      <input type="number" name="jilid" placeholder="Jilid" required>
-      <input type="text" name="penulis" placeholder="Penulis" value="Unknown">
-      <input type="number" name="stok" placeholder="Stok" value="100" required>
-      <input type="number" name="harga" placeholder="Harga" required>
-      <button type="submit">➕ Tambah Buku</button>
-    </form>
+  <h1>📚 Stok Buku Berbie Cinderella</h1>
+  <p><strong>Judul:</strong> Berbie Cinderella Jilid 1–10</p>
+  <p><strong>Penulis:</strong> Tiara Putri L.D.</p>
+  <p><strong>Stok:</strong> 100 buku per jilid</p>
+  <p><strong>Harga:</strong> Rp. 30.000 – Rp. 39.000</p>
 
-    <table id="bookTable">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Judul Buku</th>
-          <th>Jilid</th>
-          <th>Penulis</th>
-          <th>Stok</th>
-          <th>Harga</th>
-        </tr>
-      </thead>
-      <tbody id="data-body"></tbody>
-    </table>
-  </div>
+  <audio id="bg-music" autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/10/27/audio_e7c14eab3b.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio 😭
+  </audio>
 
-  <script src="script.js"></script>
+  <button id="musicToggle">🔇 Matikan Musik</button>
+
+  <form id="bookForm" onsubmit="submitForm(event)">
+    <input type="text" name="id" placeholder="ID Buku" required>
+    <input type="text" name="judul" placeholder="Judul Buku" value="Berbie Cinderella" required>
+    <input type="number" name="jilid" placeholder="Jilid" required>
+    <input type="text" name="penulis" placeholder="Penulis" value="Unknown">
+    <input type="number" name="stok" placeholder="Stok" value="100" required>
+    <input type="number" name="harga" placeholder="Harga" required>
+    <button type="submit">Tambah Buku</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Judul</th>
+        <th>Jilid</th>
+        <th>Penulis</th>
+        <th>Stok</th>
+        <th>Harga</th>
+      </tr>
+    </thead>
+    <tbody id="data-body"></tbody>
+  </table>
+
+  <script>
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.className = 'flower';
+      flower.textContent = '🌸';
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      document.body.appendChild(flower);
+      setTimeout(() => flower.remove(), 10000);
+    }
+
+    setInterval(createFlower, 800);
+  </script>
+
+  <script>
+    const music = document.getElementById('bg-music');
+    const toggleBtn = document.getElementById('musicToggle');
+
+    toggleBtn.addEventListener('click', () => {
+      if (music.paused) {
+        music.play();
+        toggleBtn.textContent = "🔇 Matikan Musik";
+      } else {
+        music.pause();
+        toggleBtn.textContent = "🔊 Mainkan Musik";
+      }
+    });
+  </script>
+
+  <script>
+    const SHEET_URL = "https://script.google.com/macros/s/AKfycbxNw1266Ytwo6cfCODUQPjha30EB01oj6eCkSUuKjYb4BHR4AQduR3qKjUiKzrj7Dau/exec";
+
+    async function loadData() {
+      const res = await fetch(SHEET_URL + "?action=get");
+      const data = await res.json();
+      const tbody = document.getElementById("data-body");
+      tbody.innerHTML = "";
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${row.id}</td>
+          <td>${row.judul}</td>
+          <td>${row.jilid}</td>
+          <td>${row.penulis}</td>
+          <td>${row.stok}</td>
+          <td>${row.harga}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function submitForm(e) {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const params = new URLSearchParams(formData);
+      params.append("action", "add");
+
+      await fetch(SHEET_URL, {
+        method: "POST",
+        body: params,
+      });
+
+      e.target.reset();
+      loadData();
+    }
+
+    loadData();
+  </script>
 </body>
 </html>
