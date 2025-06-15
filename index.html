@@ -2,19 +2,28 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>📚 Stok Buku Cinderella</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>📚 Berbie Cinderella Magic Forest</title>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-image: url('7c2208f7-1748-4b04-9995-7e972c25b7cf.png');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: #fff;
-      padding: 20px;
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
       overflow-x: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://res.cloudinary.com/djrkhnzub/image/upload/v1718428707/7c2208f7-1748-4b04-9995-7e972c25b7cf.png') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      animation: moveBackground 30s ease-in-out infinite;
+      color: #fff;
       backdrop-filter: brightness(0.8) blur(1px);
+      padding: 20px;
+    }
+
+    @keyframes moveBackground {
+      0% { background-position: center top; }
+      50% { background-position: center bottom; }
+      100% { background-position: center top; }
     }
 
     h1, p {
@@ -71,15 +80,51 @@
       text-align: center;
     }
 
-    #musicToggle {
-      display: block;
-      margin: 0 auto 20px auto;
-      padding: 8px 14px;
-      background-color: #ffb6c1;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+    .barbie {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      animation: float 6s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-15px); }
+    }
+
+    .butterfly {
+      position: absolute;
+      width: 40px;
+      animation: fly 12s infinite ease-in-out;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes fly {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(100px, -50px) rotate(90deg); }
+      50% { transform: translate(200px, 0) rotate(180deg); }
+      75% { transform: translate(100px, 50px) rotate(270deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
+    }
+
+    .magic-light {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(rgba(255,255,255,0.8), transparent);
+      border-radius: 50%;
+      animation: sparkle 5s infinite ease-in-out;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1.3); }
     }
 
     .flower {
@@ -89,20 +134,13 @@
       animation: fall 8s linear infinite;
       color: pink;
       pointer-events: none;
+      z-index: 0;
     }
 
     @keyframes fall {
-      0% {
-        transform: translateX(0) translateY(-100px) rotate(0deg);
-        opacity: 1;
-      }
-      50% {
-        transform: translateX(50px) translateY(50vh) rotate(180deg);
-      }
-      100% {
-        transform: translateX(-50px) translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translateX(0) translateY(-100px) rotate(0deg); opacity: 1; }
+      50% { transform: translateX(50px) translateY(50vh) rotate(180deg); }
+      100% { transform: translateX(-50px) translateY(100vh) rotate(360deg); opacity: 0; }
     }
 
     @media screen and (max-width: 600px) {
@@ -125,27 +163,39 @@
 </head>
 <body>
 
+  <!-- Barbie Cinderella -->
+  <img src="https://i.ibb.co/ZVK5zhV/barbie-cinderella.png" alt="Berbie" class="barbie" />
+
+  <!-- Animasi kupu-kupu -->
+  <img src="https://i.ibb.co/CKMHRjH/butterfly.png" class="butterfly" style="top:10%; left:5%;" />
+  <img src="https://i.ibb.co/CKMHRjH/butterfly.png" class="butterfly" style="top:30%; left:70%;" />
+  <img src="https://i.ibb.co/CKMHRjH/butterfly.png" class="butterfly" style="top:50%; left:20%;" />
+
+  <!-- Efek cahaya -->
+  <div class="magic-light" style="top: 20%; left: 30%;"></div>
+  <div class="magic-light" style="top: 60%; left: 50%;"></div>
+  <div class="magic-light" style="top: 40%; left: 80%;"></div>
+  <div class="magic-light" style="top: 70%; left: 10%;"></div>
+
+  <!-- Header Info -->
   <h1>📚 Stok Buku Berbie Cinderella</h1>
   <p><strong>Judul:</strong> Berbie Cinderella Jilid 1–10</p>
   <p><strong>Penulis:</strong> Tiara Putri L.D.</p>
   <p><strong>Stok:</strong> 100 buku per jilid</p>
   <p><strong>Harga:</strong> Rp. 30.000 – Rp. 39.000</p>
 
-  <!-- Embed YouTube as background music -->
-  <div style="display:none;">
-    <iframe width="0" height="0" src="https://www.youtube.com/embed/syp6Lsd8HOo?autoplay=1&loop=1&playlist=syp6Lsd8HOo" frameborder="0" allow="autoplay"></iframe>
-  </div>
-
+  <!-- Form Tambah Buku -->
   <form id="bookForm" onsubmit="submitForm(event)">
     <input type="text" name="id" placeholder="ID Buku" required>
     <input type="text" name="judul" placeholder="Judul Buku" value="Berbie Cinderella" required>
     <input type="number" name="jilid" placeholder="Jilid" required>
-    <input type="text" name="penulis" placeholder="Penulis" value="Unknown">
+    <input type="text" name="penulis" placeholder="Penulis" value="Tiara Putri L.D.">
     <input type="number" name="stok" placeholder="Stok" value="100" required>
     <input type="number" name="harga" placeholder="Harga" required>
     <button type="submit">Tambah Buku</button>
   </form>
 
+  <!-- Tabel Buku -->
   <table>
     <thead>
       <tr>
@@ -160,6 +210,11 @@
     <tbody id="data-body"></tbody>
   </table>
 
+  <!-- Musik Latar Otomatis -->
+  <div style="display: none;">
+    <iframe width="0" height="0" src="https://www.youtube.com/embed/syp6Lsd8HOo?autoplay=1&loop=1&playlist=syp6Lsd8HOo" frameborder="0" allow="autoplay"></iframe>
+  </div>
+
   <script>
     function createFlower() {
       const flower = document.createElement('div');
@@ -170,7 +225,6 @@
       document.body.appendChild(flower);
       setTimeout(() => flower.remove(), 10000);
     }
-
     setInterval(createFlower, 800);
 
     const SHEET_URL = "https://script.google.com/macros/s/AKfycbxNw1266Ytwo6cfCODUQPjha30EB01oj6eCkSUuKjYb4BHR4AQduR3qKjUiKzrj7Dau/exec";
