@@ -6,8 +6,11 @@ async function submitForm(event) {
   const formData = new FormData(form);
   formData.append("action", "add");
 
-  const params = new URLSearchParams(formData).toString();
-  const res = await fetch(`${API_URL}?${params}`, { method: "POST" });
+  const res = await fetch(API_URL, {
+    method: "POST",
+    body: formData
+  });
+
   const result = await res.text();
   alert(result);
   form.reset();
@@ -23,15 +26,16 @@ async function loadData() {
   data.forEach(row => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td>${row.ID}</td>
-      <td>${row.Judul}</td>
-      <td>${row.Jilid}</td>
-      <td>${row.Penulis}</td>
-      <td>${row.Stok}</td>
-      <td>${row.Harga}</td>
+      <td>${row.id}</td>
+      <td>${row.judul}</td>
+      <td>${row.jilid}</td>
+      <td>${row.penulis}</td>
+      <td>${row.stok}</td>
+      <td>${row.harga}</td>
     `;
     tbody.appendChild(tr);
   });
 }
 
 document.addEventListener("DOMContentLoaded", loadData);
+
