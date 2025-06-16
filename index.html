@@ -163,21 +163,17 @@
 </head>
 <body>
 
-  <!-- Barbie Cinderella -->
+  <!-- Barbie & Efek -->
   <img src="https://i.ibb.co/ZVK5zhV/barbie-cinderella.png" alt="Berbie" class="barbie" />
-
-  <!-- Animasi kupu-kupu -->
   <img src="https://i.ibb.co/CKMHRjH/butterfly.png" class="butterfly" style="top:10%; left:5%;" />
   <img src="https://i.ibb.co/CKMHRjH/butterfly.png" class="butterfly" style="top:30%; left:70%;" />
   <img src="https://i.ibb.co/CKMHRjH/butterfly.png" class="butterfly" style="top:50%; left:20%;" />
-
-  <!-- Efek cahaya -->
   <div class="magic-light" style="top: 20%; left: 30%;"></div>
   <div class="magic-light" style="top: 60%; left: 50%;"></div>
   <div class="magic-light" style="top: 40%; left: 80%;"></div>
   <div class="magic-light" style="top: 70%; left: 10%;"></div>
 
-  <!-- Header Info -->
+  <!-- Header -->
   <h1>📚 Stok Buku Berbie Cinderella</h1>
   <p><strong>Judul:</strong> Berbie Cinderella Jilid 1–10</p>
   <p><strong>Penulis:</strong> Tiara Putri L.D.</p>
@@ -195,7 +191,7 @@
     <button type="submit">Tambah Buku</button>
   </form>
 
-  <!-- Tabel Buku -->
+  <!-- Tabel -->
   <table>
     <thead>
       <tr>
@@ -210,11 +206,12 @@
     <tbody id="data-body"></tbody>
   </table>
 
-  <!-- Musik Latar Otomatis -->
+  <!-- Musik -->
   <div style="display: none;">
     <iframe width="0" height="0" src="https://www.youtube.com/embed/syp6Lsd8HOo?autoplay=1&loop=1&playlist=syp6Lsd8HOo" frameborder="0" allow="autoplay"></iframe>
   </div>
 
+  <!-- JS Dinamis -->
   <script>
     function createFlower() {
       const flower = document.createElement('div');
@@ -227,7 +224,7 @@
     }
     setInterval(createFlower, 800);
 
-    const SHEET_URL = "https://script.google.com/macros/s/AKfycbxNw1266Ytwo6cfCODUQPjha30EB01oj6eCkSUuKjYb4BHR4AQduR3qKjUiKzrj7Dau/exec";
+    const SHEET_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec";
 
     async function loadData() {
       const res = await fetch(SHEET_URL + "?action=get");
