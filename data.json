@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "judul": "Berbie Cinderella",
+    "jilid": 1,
+    "penulis": "Tiara P.L.D",
+    "stok": 100,
+    "harga": "Rp. 30.000,00"
+  },
+  {
+    "id": 2,
+    "judul": "Berbie Cinderella",
+    "jilid": 2,
+    "penulis": "Tiara P.L.D",
+    "stok": 100,
+    "harga": "Rp. 31.000,00"
+  },
+  {
+    "id": 3,
+    "judul": "Berbie Cinderella",
+    "jilid": 3,
+    "penulis": "Tiara P.L.D",
+    "stok": 100,
+    "harga": "Rp. 32.000,00"
+  },
+  {
+    "id": 4,
+    "judul": "Berbie Cinderella",
+    "jilid": 4,
+    "penulis": "Tiara P.L.D",
+    "stok": 100,
+    "harga": "Rp. 33.000,00"
+  },
+  {
+    "id": 5,
+    "judul": "Berbie Cinderella",
+    "jilid": 5,
+    "penulis": "Tiara P.L.D",
+    "stok": 100,
+    "harga": "Rp. 34.000,00"
+  },
+  {
+    "id": 6,
+    "judul": "Berbie Cinderella",
+    "jilid": 6,
+    "penulis": "Tiara P.L.D",
+    "stok": 100,
+    "harga": "Rp. 35.000,00"
+  },
+  {
+    "id": 7,
+    "judul": "Berbie Cinderella",
+    "jilid": 7,
+    "penulis": "Tiara P.L.D",
+    "stok": 100,
+    "harga": "Rp. 36.000,00"
+  },
+  {
+    "id": 8,
+    "judul": "Berbie Cinderella",
+    "jilid": 8,
+    "penulis": "Tiara P.L.D",
+    "stok": 100,
+    "harga": "Rp. 37.000,00"
+  },
+  {
+    "id": 9,
+    "judul": "Berbie Cinderella",
+    "jilid": 9,
+    "penulis": "Tiara P.L.D",
+    "stok": 100,
+    "harga": "Rp. 38.000,00"
+  },
+  {
+    "id": 10,
+    "judul": "Berbie Cinderella",
+    "jilid": 10,
+    "penulis": "Tiara P.L.D",
+    "stok": 100,
+    "harga": "Rp. 39.000,00"
+  }
+]
