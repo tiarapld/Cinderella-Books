@@ -2,276 +2,449 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>📚 Berbie Cinderella Magic Forest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stok Buku Berbie Cinderella</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <style>
-    html, body {
+    /* Reset and base */
+    * {
       margin: 0;
       padding: 0;
-      height: 100vh;
-      overflow-x: hidden;
-      font-family: 'Segoe UI', sans-serif;
-      background: url('https://res.cloudinary.com/djrkhnzub/image/upload/v1718428707/7c2208f7-1748-4b04-9995-7e972c25b7cf.png') no-repeat center center;
-      background-size: cover;
-      background-attachment: fixed;
-      animation: moveBackground 30s ease-in-out infinite;
-      color: #fff;
-      backdrop-filter: brightness(0.8) blur(1px);
-      padding: 20px;
+      box-sizing: border-box;
     }
-
-    @keyframes moveBackground {
-      0% { background-position: center top; }
-      50% { background-position: center bottom; }
-      100% { background-position: center top; }
+    html {
+      font-size: 16px;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
     }
-
-    h1, p {
-      text-align: center;
-      text-shadow: 0 0 10px #fff, 0 0 20px #ffb6c1;
-    }
-
-    form {
+    body {
+      background: linear-gradient(135deg, #f8f4f9, #ffe9f3);
+      color: #222;
+      min-height: 100vh;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 20px;
-      backdrop-filter: blur(4px);
+      flex-direction: column;
+      align-items: center;
+      position: relative; /* Added for absolute positioning of flowers */
+      overflow: hidden; /* Prevents scrollbars from appearing */
     }
 
-    input, button {
-      padding: 8px;
-      margin: 5px;
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 1.5rem auto 3rem;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 12px;
+      padding: 2rem 2.5rem 3rem;
+      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.25);
+      position: relative;
+    }
+
+    /* Header with icon and title */
+    .header-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 2.25rem;
+      color: #da4a91;
+      text-shadow: 0 0 6px #ff91ce;
+      margin-bottom: 1rem;
+    }
+    .header-title .material-icons {
+      font-size: 2.75rem;
+      color: #e91e63;
+    }
+
+    /* Subtitle & info */
+    .book-info {
+      color: #555;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 2.5rem;
+      user-select: none;
+      max-width: 600px;
+    }
+    .book-info b {
+      color: #da4a91;
+    }
+
+    /* Form grid */
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.2rem 1.8rem;
+      margin-bottom: 2rem;
+    }
+    label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #444;
+      margin-bottom: 0.25rem;
+      user-select: none;
+      display: block;
+    }
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid #e4c8dc;
+      border-radius: 10px;
+      font-size: 1rem;
+      color: #333;
+      transition: border-color 0.25s ease;
+      outline-offset: 3px;
+    }
+    input[type="text"]:focus,
+    input[type="number"]:focus {
+      border-color: #da4a91;
+      box-shadow: 0 0 12px rgba(233, 30, 99, 0.8);
+    }
+
+    /* Button */
+    #add-book-btn {
+      grid-column: 1 / -1;
+      justify-self: center;
+      padding: 14px 38px;
+      background: linear-gradient(135deg, #e91e63, #da4a91);
       border: none;
-      border-radius: 8px;
-    }
-
-    input {
-      background-color: #ffffffcc;
-    }
-
-    button {
-      background-color: #ff80aa;
+      border-radius: 14px;
       color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
       cursor: pointer;
-      transition: background 0.3s ease;
+      box-shadow: 0 5px 15px rgba(233, 30, 99, 0.5);
+      transition: background 0.3s ease, transform 0.25s ease;
+    }
+    #add-book-btn:hover,
+    #add-book-btn:focus {
+      background: linear-gradient(135deg, #bf1454, #a71544);
+      transform: scale(1.05);
+      outline: none;
     }
 
-    button:hover {
-      background-color: #cc4c8b;
-    }
-
+    /* Table styles */
     table {
       width: 100%;
       border-collapse: collapse;
-      background-color: rgba(255, 255, 255, 0.9);
-      color: black;
-      box-shadow: 0 0 10px rgba(255,255,255,0.5);
+      user-select: none;
     }
-
-    th {
-      background-color: #d94f8b;
+    thead {
+      background: #da4a91;
       color: white;
     }
-
     th, td {
-      padding: 10px;
-      border: 1px solid #ccc;
+      padding: 12px 16px;
       text-align: center;
+      font-weight: 600;
+      border-bottom: 2px solid #f4c1da;
+    }
+    tbody tr {
+      background: #fff0f6;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+    tbody tr:hover,
+    tbody tr:focus-within {
+      background: #ffd1e6;
+    }
+    tbody td {
+      font-weight: 500;
+      color: #50334f;
     }
 
-    .barbie {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 180px;
-      animation: float 6s ease-in-out infinite;
-      z-index: 0;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(-15px); }
-    }
-
-    .butterfly {
-      position: absolute;
-      width: 40px;
-      animation: fly 12s infinite ease-in-out;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    @keyframes fly {
-      0% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(100px, -50px) rotate(90deg); }
-      50% { transform: translate(200px, 0) rotate(180deg); }
-      75% { transform: translate(100px, 50px) rotate(270deg); }
-      100% { transform: translate(0, 0) rotate(360deg); }
-    }
-
-    .magic-light {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background: radial-gradient(rgba(255,255,255,0.8), transparent);
-      border-radius: 50%;
-      animation: sparkle 5s infinite ease-in-out;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    @keyframes sparkle {
-      0%, 100% { opacity: 0; transform: scale(0.5); }
-      50% { opacity: 1; transform: scale(1.3); }
-    }
-
+    /* Flower styles */
     .flower {
       position: absolute;
-      top: -50px;
       font-size: 24px;
-      animation: fall 8s linear infinite;
-      color: pink;
+      animation: fall linear infinite;
       pointer-events: none;
       z-index: 0;
     }
 
     @keyframes fall {
-      0% { transform: translateX(0) translateY(-100px) rotate(0deg); opacity: 1; }
-      50% { transform: translateX(50px) translateY(50vh) rotate(180deg); }
-      100% { transform: translateX(-50px) translateY(100vh) rotate(360deg); opacity: 0; }
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+      50% { opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
 
-    @media screen and (max-width: 600px) {
+    /* Responsive fonts and spacing */
+    @media (max-width: 767px) {
+      .container {
+        padding: 1.5rem 1.5rem 2rem;
+      }
+      .header-title {
+        font-size: 1.75rem;
+      }
+      .header-title .material-icons {
+        font-size: 2rem;
+      }
+      .book-info {
+        font-size: 0.9rem;
+        max-width: 100%;
+      }
       form {
-        flex-direction: column;
-        align-items: stretch;
+        grid-template-columns: 1fr;
+        gap: 1rem;
       }
-
-      input, button {
+      #add-book-btn {
         width: 100%;
+        font-size: 1.1rem;
+        padding: 14px;
       }
+      th, td {
+        padding: 10px 12px;
+        font-size: 0.875rem;
+      }
+    }
 
-      table {
-        font-size: 14px;
-        overflow-x: auto;
-        display: block;
-      }
+    /* Accessibility */
+    #add-book-btn:focus-visible {
+      outline: 3px solid #da4a91;
+      outline-offset: 3px;
     }
   </style>
 </head>
 <body>
-  <!-- Barbie & Efek -->
-  <img src="https://i.ibb.co/ZVK5zhV/barbie-cinderella.png" alt="Berbie" class="barbie" />
-  <img src="https://i.ibb.co/CKMHRjH/butterfly.png" class="butterfly" style="top:10%; left:5%;" />
-  <img src="https://i.ibb.co/CKMHRjH/butterfly.png" class="butterfly" style="top:30%; left:70%;" />
-  <img src="https://i.ibb.co/CKMHRjH/butterfly.png" class="butterfly" style="top:50%; left:20%;" />
-  <div class="magic-light" style="top: 20%; left: 30%;"></div>
-  <div class="magic-light" style="top: 60%; left: 50%;"></div>
-  <div class="magic-light" style="top: 40%; left: 80%;"></div>
-  <div class="magic-light" style="top: 70%; left: 10%;"></div>
 
-  <!-- Bunga Jatuh -->
-  <div class="flower-icon" style="
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    width: 50px;
-    height: 50px;
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Simple_flower_icon.svg/512px-Simple_flower_icon.svg.png');
-    background-size: cover;
-    opacity: 0.6;
-    z-index: 1000;"></div>
+<header aria-label="Navigasi utama" style="width: 100%; background: #e91e63; box-shadow: inset 0 -3px 8px #bf1454;">
+  <nav class="container" style="display:flex; justify-content: space-between; align-items: center; padding:0.75rem 0;">
+    <a href="#" style="color:#fff; font-weight: 700; font-size: 1.5rem; text-decoration: none; user-select:none;">
+      <span class="material-icons" aria-hidden="true" style="vertical-align: middle; font-size: 2rem;">menu_book</span>
+      &nbsp; Stok Buku Berbie Cinderella
+    </a>
+    <a href="#stok-buku" style="color:#fff; font-weight: 600; font-size: 1rem; text-decoration: none; user-select:none;" aria-label="Lompat ke stok buku">Stok Buku</a>
+  </nav>
+</header>
 
-  <!-- Header -->
-  <h1>📚 Stok Buku Berbie Cinderella</h1>
-  <p><strong>Judul:</strong> Berbie Cinderella Jilid 1–10</p>
-  <p><strong>Penulis:</strong> Tiara Putri L.D.</p>
-  <p><strong>Stok:</strong> 100 buku per jilid</p>
-  <p><strong>Harga:</strong> Rp. 30.000 – Rp. 39.000</p>
+<main class="container" role="main" aria-labelledby="main-title">
 
-  <!-- Form -->
-  <form id="bookForm" onsubmit="submitForm(event)">
-    <input type="text" name="id" placeholder="ID Buku" required>
-    <input type="text" name="judul" placeholder="Judul Buku" value="Berbie Cinderella" required>
-    <input type="number" name="jilid" placeholder="Jilid" required>
-    <input type="text" name="penulis" placeholder="Penulis" value="Tiara Putri L.D.">
-    <input type="number" name="stok" placeholder="Stok" value="100" required>
-    <input type="number" name="harga" placeholder="Harga" required>
-    <button type="submit">Tambah Buku</button>
+  <h1 id="main-title" class="header-title">
+    <span class="material-icons" aria-hidden="true">book</span> Stok Buku Berbie Cinderella
+  </h1>
+
+  <section class="book-info" aria-label="Informasi produk buku Berbie Cinderella">
+    <p><b>Judul:</b> Berbie Cinderella Jilid 1–10</p>
+    <p><b>Penulis:</b> Tiara Putri L.D.</p>
+    <p><b>Stok:</b> 100 buku per jilid</p>
+    <p><b>Harga:</b> Rp. 30.000 – Rp. 39.000</p>
+  </section>
+
+  <form id="add-book-form" aria-label="Formulir tambah buku">
+    <div>
+      <label for="bookId">ID Buku</label>
+      <input type="text" id="bookId" name="bookId" placeholder="Masukkan ID Buku" required aria-required="true" autocomplete="off" />
+    </div>
+    <div>
+      <label for="judul">Judul</label>
+      <input type="text" id="judul" name="judul" placeholder="Masukkan Judul" value="Berbie Cinderella" required aria-required="true" readonly />
+    </div>
+    <div>
+      <label for="jilid">Jilid</label>
+      <input type="number" id="jilid" name="jilid" placeholder="Masukkan Jilid (1-10)" min="1" max="10" required aria-required="true" />
+    </div>
+    <div>
+      <label for="penulis">Penulis</label>
+      <input type="text" id="penulis" name="penulis" placeholder="Masukkan Nama Penulis" value="Tiara Putri L.D." required aria-required="true" />
+    </div>
+    <div>
+      <label for="stok">Stok</label>
+      <input type="number" id="stok" name="stok" placeholder="Masukkan jumlah stok" min="1" required aria-required="true" />
+    </div>
+    <div>
+      <label for="harga">Harga (Rp)</label>
+      <input type="number" id="harga" name="harga" placeholder="Masukkan Harga satuan" min="1000" step="1000" required aria-required="true" />
+    </div>
+
+    <button type="submit" id="add-book-btn" aria-label="Tambah buku ke daftar">Tambah Buku</button>
   </form>
 
-  <!-- Tabel -->
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Judul</th>
-        <th>Jilid</th>
-        <th>Penulis</th>
-        <th>Stok</th>
-        <th>Harga</th>
-      </tr>
-    </thead>
-    <tbody id="data-body"></tbody>
-  </table>
+  <section id="stok-buku" aria-label="Daftar stok buku Berbie Cinderella">
+    <table aria-describedby="main-title" tabindex="0" role="grid">
+      <thead>
+        <tr>
+          <th scope="col" tabindex="0">ID</th>
+          <th scope="col" tabindex="0">Judul</th>
+          <th scope="col" tabindex="0">Jilid</th>
+          <th scope="col" tabindex="0">Penulis</th>
+          <th scope="col" tabindex="0">Stok</th>
+          <th scope="col" tabindex="0">Harga</th>
+        </tr>
+      </thead>
+      <tbody id="book-table-body">
+        <!-- Initial book stock rows will be inserted here dynamically -->
+      </tbody>
+    </table>
+  </section>
 
-  <!-- Musik -->
-  <div style="display: none;">
-    <iframe width="0" height="0" src="https://www.youtube.com/embed/syp6Lsd8HOo?autoplay=1&loop=1&playlist=syp6Lsd8HOo" frameborder="0" allow="autoplay"></iframe>
-  </div>
+</main>
 
-  <!-- JavaScript Dinamis -->
+<footer aria-label="Footer situs web" style="width: 100%; background: #da4a91; color: white; text-align: center; padding: 1rem 0;">
+  <p style="font-weight: 600;">&copy; 2024 Stok Buku Berbie Cinderella. All rights reserved.</p>
+</footer>
+
+<script>
+  // Initial books data to populate table
+  const initialBooks = [
+    { id: "BCJ01", judul: "Berbie Cinderella", jilid: 1, penulis: "Tiara Putri L.D.", stok: 100, harga: 30000 },
+    { id: "BCJ02", judul: "Berbie Cinderella", jilid: 2, penulis: "Tiara Putri L.D.", stok: 100, harga: 32000 },
+    { id: "BCJ03", judul: "Berbie Cinderella", jilid: 3, penulis: "Tiara Putri L.D.", stok: 100, harga: 33000 },
+    { id: "BCJ04", judul: "Berbie Cinderella", jilid: 4, penulis: "Tiara Putri L.D.", stok: 100, harga: 34000 },
+    { id: "BCJ05", judul: "Berbie Cinderella", jilid: 5, penulis: "Tiara Putri L.D.", stok: 100, harga: 35000 },
+    { id: "BCJ06", judul: "Berbie Cinderella", jilid: 6, penulis: "Tiara Putri L.D.", stok: 100, harga: 36000 },
+    { id: "BCJ07", judul: "Berbie Cinderella", jilid: 7, penulis: "Tiara Putri L.D.", stok: 100, harga: 37000 },
+    { id: "BCJ08", judul: "Berbie Cinderella", jilid: 8, penulis: "Tiara Putri L.D.", stok: 100, harga: 38000 },
+    { id: "BCJ09", judul: "Berbie Cinderella", jilid: 9, penulis: "Tiara Putri L.D.", stok: 100, harga: 39000 },
+    { id: "BCJ10", judul: "Berbie Cinderella", jilid: 10, penulis: "Tiara Putri L.D.", stok: 100, harga: 39000 },
+  ];
+
+  const tbody = document.getElementById('book-table-body');
   <script>
-    function createFlower() {
-      const flower = document.createElement('div');
-      flower.className = 'flower';
-      flower.textContent = '🌸';
-      flower.style.left = Math.random() * 100 + 'vw';
-      flower.style.animationDuration = (Math.random() * 5 + 5) + 's';
-      document.body.appendChild(flower);
-      setTimeout(() => flower.remove(), 10000);
-    }
-    setInterval(createFlower, 800);
+  // Fungsi bunga malam (variasi emoji)
+  const flowerEmojis = ['🌙🌼', '🌙💐', '🌙🌺', '🌙🌷', '🌙🌸', '🌙🌻'];
 
-    const SHEET_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec";
+  function createFlower() {
+    const flower = document.createElement('div');
+    flower.className = 'flower';
+    flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+    flower.style.left = Math.random() * 100 + 'vw';
+    flower.style.animationDuration = (Math.random() * 5 + 5) + 's';
+    document.body.appendChild(flower);
+    setTimeout(() => flower.remove(), 10000);
+  }
 
-    async function loadData() {
-      const res = await fetch(SHEET_URL + "?action=get");
-      const data = await res.json();
-      const tbody = document.getElementById("data-body");
-      tbody.innerHTML = "";
-      data.forEach(row => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${row.id}</td>
-          <td>${row.judul}</td>
-          <td>${row.jilid}</td>
-          <td>${row.penulis}</td>
-          <td>${row.stok}</td>
-          <td>${row.harga}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
+  setInterval(createFlower, 1000); // 1 bunga tiap 1 detik
+</script>
 
-    async function submitForm(e) {
-      e.preventDefault();
-      const formData = new FormData(e.target);
-      const params = new URLSearchParams(formData);
-      params.append("action", "add");
-
-      await fetch(SHEET_URL, {
-        method: "POST",
-        body: params,
-      });
-
-      e.target.reset();
-      loadData();
-    }
-
-    loadData();
-  </script>
 </body>
 </html>
+  const form = document.getElementById('add-book-form');
+
+  // Format harga currency in Indonesian Rupiah format
+  function formatRupiah(number) {
+    return "Rp " + number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+
+  // Insert book row in table
+  function addBookRow(book) {
+    const tr = document.createElement('tr');
+    tr.tabIndex = 0;
+    tr.setAttribute('role', 'row');
+
+    // ID
+    const tdId = document.createElement('td');
+    tdId.textContent = book.id;
+    tr.appendChild(tdId);
+
+    // Judul
+    const tdJudul = document.createElement('td');
+    tdJudul.textContent = book.judul;
+    tr.appendChild(tdJudul);
+
+    // Jilid
+    const tdJilid = document.createElement('td');
+    tdJilid.textContent = book.jilid;
+    tr.appendChild(tdJilid);
+
+    // Penulis
+    const tdPenulis = document.createElement('td');
+    tdPenulis.textContent = book.penulis;
+    tr.appendChild(tdPenulis);
+
+    // Stok
+    const tdStok = document.createElement('td');
+    tdStok.textContent = book.stok;
+    tr.appendChild(tdStok);
+
+    // Harga
+    const tdHarga = document.createElement('td');
+    tdHarga.textContent = formatRupiah(book.harga);
+    tr.appendChild(tdHarga);
+
+    tbody.appendChild(tr);
+  }
+
+  // Initially populate table
+  initialBooks.forEach(book => addBookRow(book));
+
+  // Form submit
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Validate inputs
+    const id = form.bookId.value.trim();
+    const judul = form.judul.value.trim();
+    const jilidNum = Number(form.jilid.value);
+    const penulis = form.penulis.value.trim();
+    const stokNum = Number(form.stok.value);
+    const hargaNum = Number(form.harga.value);
+
+    if (!id || !judul || !penulis) {
+      alert('Harap isi semua kolom dengan benar.');
+      return;
+    }
+    if (!(jilidNum >= 1 && jilidNum <= 10)) {
+      alert('Jilid harus di antara 1 sampai 10.');
+      return;
+    }
+    if (stokNum < 1 || isNaN(stokNum)) {
+      alert('Stok harus angka positif.');
+      return;
+    }
+    if (hargaNum < 1000 || isNaN(hargaNum)) {
+      alert('Harga harus minimal Rp 1.000.');
+      return;
+    }
+
+    // Add new book to the table
+    const newBook = { id, judul, jilid: jilidNum, penulis, stok: stokNum, harga: hargaNum };
+    addBookRow(newBook);
+    form.reset();
+  });
+
+  // Function to create falling flowers
+  function createFlower() {
+    const flower = document.createElement('div');
+    flower.className = 'flower';
+    flower.textContent = '🌸'; // You can change this to any flower emoji or image
+    flower.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+    flower.style.animationDuration = (Math.random() * 5 + 5) + 's'; // Random fall duration
+    document.body.appendChild(flower);
+    setTimeout(() => flower.remove(), 10000); // Remove flower after 10 seconds
+  }
+
+  // Create flowers at intervals
+  setInterval(createFlower, 800); // Create a flower every 800 milliseconds
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stok Buku Berbie Cinderella</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    /* ... (CSS kamu tetap, tanpa perubahan) ... */
+    .flower {
+      position: absolute;
+      font-size: 24px;
+      animation: fall linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+      50% { opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
