@@ -84,7 +84,7 @@ tr:hover {
   background-color: #ffe4ec;
 }
 
-/* 🌸 Bunga jatuh animasi */
+/* 🌸 Animasi bunga jatuh */
 @keyframes fall {
   0% {
     transform: translateY(-100px) rotate(0deg);
@@ -106,10 +106,15 @@ tr:hover {
 }
 
 .flower:nth-child(1) { left: 5%; animation-duration: 12s; }
-.flower:nth-child(2) { left: 20%; animation-duration: 14s; }
-.flower:nth-child(3) { left: 40%; animation-duration: 13s; }
-.flower:nth-child(4) { left: 60%; animation-duration: 11s; }
-.flower:nth-child(5) { left: 80%; animation-duration: 15s; }
+.flower:nth-child(2) { left: 15%; animation-duration: 14s; }
+.flower:nth-child(3) { left: 25%; animation-duration: 11s; }
+.flower:nth-child(4) { left: 35%; animation-duration: 13s; }
+.flower:nth-child(5) { left: 45%; animation-duration: 10s; }
+.flower:nth-child(6) { left: 55%; animation-duration: 12.5s; }
+.flower:nth-child(7) { left: 65%; animation-duration: 13.5s; }
+.flower:nth-child(8) { left: 75%; animation-duration: 14.5s; }
+.flower:nth-child(9) { left: 85%; animation-duration: 15s; }
+.flower:nth-child(10) { left: 95%; animation-duration: 12s; }
 
 /* 🌼 Ikon bunga pojok */
 .flower-icon {
