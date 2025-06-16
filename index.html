@@ -162,7 +162,6 @@
   </style>
 </head>
 <body>
-
   <!-- Barbie & Efek -->
   <img src="https://i.ibb.co/ZVK5zhV/barbie-cinderella.png" alt="Berbie" class="barbie" />
   <img src="https://i.ibb.co/CKMHRjH/butterfly.png" class="butterfly" style="top:10%; left:5%;" />
@@ -173,6 +172,18 @@
   <div class="magic-light" style="top: 40%; left: 80%;"></div>
   <div class="magic-light" style="top: 70%; left: 10%;"></div>
 
+  <!-- Bunga Jatuh -->
+  <div class="flower-icon" style="
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Simple_flower_icon.svg/512px-Simple_flower_icon.svg.png');
+    background-size: cover;
+    opacity: 0.6;
+    z-index: 1000;"></div>
+
   <!-- Header -->
   <h1>📚 Stok Buku Berbie Cinderella</h1>
   <p><strong>Judul:</strong> Berbie Cinderella Jilid 1–10</p>
@@ -180,7 +191,7 @@
   <p><strong>Stok:</strong> 100 buku per jilid</p>
   <p><strong>Harga:</strong> Rp. 30.000 – Rp. 39.000</p>
 
-  <!-- Form Tambah Buku -->
+  <!-- Form -->
   <form id="bookForm" onsubmit="submitForm(event)">
     <input type="text" name="id" placeholder="ID Buku" required>
     <input type="text" name="judul" placeholder="Judul Buku" value="Berbie Cinderella" required>
@@ -211,7 +222,7 @@
     <iframe width="0" height="0" src="https://www.youtube.com/embed/syp6Lsd8HOo?autoplay=1&loop=1&playlist=syp6Lsd8HOo" frameborder="0" allow="autoplay"></iframe>
   </div>
 
-  <!-- JS Dinamis -->
+  <!-- JavaScript Dinamis -->
   <script>
     function createFlower() {
       const flower = document.createElement('div');
