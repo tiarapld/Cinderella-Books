@@ -1,87 +1,82 @@
+/* 🌼 Styling Umum */
 body {
   font-family: 'Segoe UI', sans-serif;
   background: #f0f8ff;
   color: #333;
   padding: 20px;
   margin: 0;
+  overflow-x: hidden;
 }
 
+/* 🌸 Container utama */
 .container {
   max-width: 800px;
   margin: auto;
   background: #ffffff;
   border: 2px solid #dcdcdc;
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  background-image: url('https://www.transparenttextures.com/patterns/floral-white.png'); /* bunga lembut */
+  border-radius: 15px;
+  padding: 40px 30px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  background-image: url('https://www.transparenttextures.com/patterns/floral-white.png');
 }
 
+/* 🌺 Judul dan subjudul */
 h1 {
   color: #c2185b;
   text-align: center;
-  font-size: 28px;
+  font-size: 34px;
+  margin-bottom: 10px;
 }
 
+h2 {
+  color: #777;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+/* ✨ Paragraf */
 p {
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.7;
+  text-align: justify;
+  margin-bottom: 20px;
 }
 
-form {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
-input {
-  padding: 10px;
-  border: 1px solid #bbb;
-  border-radius: 6px;
-  flex: 1 1 200px;
-}
-
+/* 🔵 Tombol Aksi */
 button {
+  display: block;
+  margin: 20px auto 0;
   background-color: #2196f3;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
   background-color: #1976d2;
+  transform: scale(1.05);
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+/* 📬 Formulir Kontak / Pemesanan */
+form {
   margin-top: 30px;
-  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-th {
-  background-color: #e91e63;
-  color: white;
+input[type="text"],
+input[type="email"] {
   padding: 12px;
-  text-transform: uppercase;
-}
-
-td {
-  padding: 10px;
-  border: 1px solid #ddd;
-}
-
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-tr:hover {
-  background-color: #ffe4ec;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  width: 100%;
 }
 
 /* 🌸 Animasi bunga jatuh */
@@ -103,28 +98,22 @@ tr:hover {
   font-size: 24px;
   animation: fall linear infinite;
   pointer-events: none;
+  opacity: 0.8;
 }
 
-.flower:nth-child(1) { left: 5%; animation-duration: 12s; }
-.flower:nth-child(2) { left: 15%; animation-duration: 14s; }
-.flower:nth-child(3) { left: 25%; animation-duration: 11s; }
-.flower:nth-child(4) { left: 35%; animation-duration: 13s; }
-.flower:nth-child(5) { left: 45%; animation-duration: 10s; }
-.flower:nth-child(6) { left: 55%; animation-duration: 12.5s; }
-.flower:nth-child(7) { left: 65%; animation-duration: 13.5s; }
-.flower:nth-child(8) { left: 75%; animation-duration: 14.5s; }
-.flower:nth-child(9) { left: 85%; animation-duration: 15s; }
-.flower:nth-child(10) { left: 95%; animation-duration: 12s; }
+/* 🌀 Variasi posisi dan durasi untuk efek natural */
+.flower:nth-child(1) { left: 3%; font-size: 26px; animation-duration: 12s; }
+.flower:nth-child(2) { left: 13%; font-size: 22px; animation-duration: 15s; }
+.flower:nth-child(3) { left: 23%; font-size: 28px; animation-duration: 10s; }
+.flower:nth-child(4) { left: 33%; font-size: 25px; animation-duration: 13s; }
+.flower:nth-child(5) { left: 43%; font-size: 21px; animation-duration: 11.5s; }
+.flower:nth-child(6) { left: 53%; font-size: 30px; animation-duration: 14.5s; }
+.flower:nth-child(7) { left: 63%; font-size: 27px; animation-duration: 13s; }
+.flower:nth-child(8) { left: 73%; font-size: 23px; animation-duration: 16s; }
+.flower:nth-child(9) { left: 83%; font-size: 29px; animation-duration: 12s; }
+.flower:nth-child(10) { left: 93%; font-size: 24px; animation-duration: 15s; }
 
-/* 🌼 Ikon bunga pojok */
-.flower-icon {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  width: 50px;
-  height: 50px;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Simple_flower_icon.svg/512px-Simple_flower_icon.svg.png');
-  background-size: cover;
-  opacity: 0.6;
-  z-index: 1000;
+/* 💮 Tambahan bunga kecil */
+.flower::selection {
+  background: none;
 }
